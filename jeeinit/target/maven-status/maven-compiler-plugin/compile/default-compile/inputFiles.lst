@@ -3,4 +3,5 @@
 /home/tselber/projects/jee-microprofile-kafi/jeeinit/src/main/java/ch/puzzle/selbert/jee/kafi/shop/control/Inventory.java
 /home/tselber/projects/jee-microprofile-kafi/jeeinit/src/main/java/ch/puzzle/selbert/jee/kafi/shop/entity/Item.java
 /home/tselber/projects/jee-microprofile-kafi/jeeinit/src/main/java/ch/puzzle/selbert/jee/kafi/JAXRSConfiguration.java
+/home/tselber/projects/jee-microprofile-kafi/jeeinit/src/main/java/ch/puzzle/selbert/jee/kafi/info/boundary/InfoResource.java
 /home/tselber/projects/jee-microprofile-kafi/jeeinit/src/main/java/ch/puzzle/selbert/jee/kafi/shop/control/InventoryIsFullException.java

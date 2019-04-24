@@ -9,6 +9,7 @@ services:
     image: my-cool-service:ol
     environment:
       - SHOULD_FAIL=true
+      - APPLICATION_SERVER=OpenLiberty
     ports:
       - 9080:9080
   shop-pm:
@@ -19,6 +20,7 @@ services:
     image: my-cool-service:pm
     environment:
       - SHOULD_FAIL=true
+      - APPLICATION_SERVER=Payara Micro
     ports:
       - 9081:8080
   shop-tt:
@@ -29,6 +31,7 @@ services:
     image: my-cool-service:tt
     environment:
       - SHOULD_FAIL=true
+      - APPLICATION_SERVER=Thorntail
     ports:
       - 9082:8080
   prometheus:
