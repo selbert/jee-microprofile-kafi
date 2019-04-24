@@ -43,7 +43,7 @@ public class Inventory {
         return Optional.of(item);
     }
 
-    public Optional<Object> trashTheItem(Item egg) {
+    public Optional<Item> trashTheItem(Item egg) {
         System.out.println("--- throwing the item away: " + egg);
         return Optional.empty();
     }
