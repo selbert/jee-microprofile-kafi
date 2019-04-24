@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  my-cool-service:
+    container_name: my-shop
+    build:
+      context: .
+    image: my-cool-service:latest
+    ports:
+      - 9080:9080
+      - 9443:9443

@@ -1,0 +1,13 @@
+{
+  "realm": "pitc",
+  "auth-server-url": "https://sso.puzzle.ch/auth",
+  "ssl-required": "external",
+  "resource": "jee-mp-client",
+  "verify-token-audience": true,
+  "enable-cors" : true,
+  "credentials": {
+    "secret": "9669460b-82f4-4341-8cc0-02f942f36ae5"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}
