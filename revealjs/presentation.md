@@ -116,3 +116,7 @@ health checks
 <!-- section -->
 # Demo
 <!-- .slide: class="master05" -->
+
+<!-- section -->
+
+![Github](img/github.png)
