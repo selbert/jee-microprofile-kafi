@@ -2,11 +2,18 @@ global:
   scrape_interval:     15s
   evaluation_interval: 15s
 
-  external_labels:
-    monitor: 'codelab-monitor'
-
 scrape_configs:
-  - job_name: "store"
+  - job_name: "store-ol"
     scrape_interval: "15s"
     static_configs:
-    - targets: ['shop:9080']
+    - targets: ['shop-ol:9080']
+
+  - job_name: "store-tt"
+    scrape_interval: "15s"
+    static_configs:
+    - targets: ['shop-tt:8080']
+
+  - job_name: "store-pm"
+    scrape_interval: "15s"
+    static_configs:
+    - targets: ['shop-pm:8080']

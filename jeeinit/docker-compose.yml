@@ -1,16 +1,36 @@
 version: "3.7"
 
 services:
-  shop:
-    container_name: my-shop
+  shop-ol:
+    container_name: my-shop-ol
     build:
       context: .
-    image: my-cool-service:latest
+      dockerfile: Dockerfile.ol
+    image: my-cool-service:ol
     environment:
       - SHOULD_FAIL=true
     ports:
       - 9080:9080
-      - 9443:9443
+  shop-pm:
+    container_name: my-shop-pm
+    build:
+      context: .
+      dockerfile: Dockerfile.pm
+    image: my-cool-service:pm
+    environment:
+      - SHOULD_FAIL=true
+    ports:
+      - 9081:8080
+  shop-tt:
+    container_name: my-shop-tt
+    build:
+      context: .
+      dockerfile: Dockerfile.tt
+    image: my-cool-service:tt
+    environment:
+      - SHOULD_FAIL=true
+    ports:
+      - 9082:8080
   prometheus:
     image: quay.io/prometheus/prometheus
     volumes:
@@ -19,4 +39,6 @@ services:
     ports:
       - 9090:9090
     depends_on:
-      - shop
+      - shop-ol
+      - shop-pm
+      - shop-tt

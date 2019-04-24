@@ -13,11 +13,12 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 @ApplicationScoped
 public class Inventory {
     private List<Item> items;
-
+    private Random random = new Random();
     @Inject
     @ConfigProperty(name = "should.fail", defaultValue = "false")
     Boolean shouldFail;
@@ -28,10 +29,10 @@ public class Inventory {
     }
 
     @Fallback(fallbackMethod = "trashTheItem")
-    @Retry(maxRetries = 3)
+    @Retry(maxRetries = 2)
     public void storeItem(Item egg) {
         System.out.println("....retrying...");
-        if (shouldFail)
+        if (shouldFail && random.nextBoolean())
             throw new InventoryIsFullException("Store is full");
         this.items.add(egg);
     }
