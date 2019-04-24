@@ -118,5 +118,10 @@ health checks
 <!-- .slide: class="master05" -->
 
 <!-- section -->
-
-![Github](img/github.png)
+### bitcoins
+![Github](img/qr.png)<br>
+<small>36qchFS4sarRXwUgMVU4fDFGhbYFeUr2SB</small>
+<!-- slide -->
+### code + presentation
+![Github](img/github.png)<br>
+<small>https://github.com/selbert/jee-microprofile-kafi</small>
