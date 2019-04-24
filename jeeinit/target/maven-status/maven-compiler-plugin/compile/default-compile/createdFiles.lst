@@ -1,3 +1,6 @@
+ch/puzzle/selbert/jee/kafi/shop/control/Inventory.class
+ch/puzzle/selbert/jee/kafi/shop/control/InventoryIsFullException.class
 ch/puzzle/selbert/jee/kafi/shop/entity/Item.class
 ch/puzzle/selbert/jee/kafi/JAXRSConfiguration.class
+ch/puzzle/selbert/jee/kafi/shop/control/ItemNotFoundException.class
 ch/puzzle/selbert/jee/kafi/shop/boundary/ItemsResource.class

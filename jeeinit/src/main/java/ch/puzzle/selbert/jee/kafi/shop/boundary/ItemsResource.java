@@ -1,38 +1,52 @@
 package ch.puzzle.selbert.jee.kafi.shop.boundary;
 
+import ch.puzzle.selbert.jee.kafi.shop.control.Inventory;
 import ch.puzzle.selbert.jee.kafi.shop.entity.Item;
-import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Metered;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
 import java.util.List;
 
+@RequestScoped
 @Path("/items")
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class ItemsResource {
+
     @Inject
-    private JsonWebToken callerPrincipal;
+    Inventory inventory;
+
+    @Context
+    UriInfo uriInfo;
 
     @GET
+    @Metered(name = "itemListMeter")
+    @Counted(name = "itemListCount", monotonic = true)
     public List<Item> itemList() {
-        System.out.println(callerPrincipal.getIssuer());
-        System.out.println(callerPrincipal.getRawToken());
-        System.out.println(callerPrincipal.getTokenID());
-        System.out.println(callerPrincipal.getGroups());
-        Item theItem = new Item();
-        theItem.id = "this item's id";
-        return List.of(theItem);
+        return inventory.all();
     }
 
     @GET
     @Path("/{id}")
-    public Item item(@PathParam(value = "id") String id) {
-        Item theItem = new Item();
-        theItem.id = id;
-        return theItem;
+    @Metered(name = "itemMeter")
+    @Counted(name = "itemCount", monotonic = true)
+    public Item item(@PathParam(value = "id") int id) {
+        return inventory.getItem(id);
+    }
+
+    @POST
+    @Metered(name = "addItemMeter")
+    @Counted(name = "addItemCount", monotonic = true)
+    public Response addItem(Item item) {
+        inventory.storeItem(item);
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(item.id + "");
+        return Response
+                .created(builder.build())
+                .links(Link.fromUriBuilder(builder).rel("self").build())
+                .build();
     }
 }

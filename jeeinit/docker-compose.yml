@@ -1,11 +1,22 @@
 version: "3.7"
 
 services:
-  my-cool-service:
+  shop:
     container_name: my-shop
     build:
       context: .
     image: my-cool-service:latest
+    environment:
+      - SHOULD_FAIL=true
     ports:
       - 9080:9080
       - 9443:9443
+  prometheus:
+    image: quay.io/prometheus/prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus"
+    ports:
+      - 9090:9090
+    depends_on:
+      - shop
