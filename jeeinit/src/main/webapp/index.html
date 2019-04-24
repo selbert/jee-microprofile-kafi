@@ -1,53 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Eclipse MicroProfile demo</title>
+    <meta charset="UTF-8"/>
+    <title>microprofile</title>
 </head>
 <body>
-
-<h2>MicroProfile</h2>
-
-<a href="data/hello" target="_blank" >Hello JAX-RS endpoint</a> <br/>
-
+<h2>microprofile</h2>
 
 <h3>Config</h3>
-<a href="data/config/injected" target="_blank" >Injected config values</a> <br/>
-<a href="data/config/lookup" target="_blank" >Config values by lookup</a> <br/>
+<a href="resources/info" target="_blank" >Info endpoint with injected config</a> <br/>
 
 
+<h3>Items resource</h3>
+<a href="resources/items" target="_blank" >All Items</a> <br/>
+<a href="resources/items/0" target="_blank" >One Item</a> <br/>
+<label>Create new Item with 2 retries and 50% probability of failure per retry</label>
+<input id="itemId" type="number" value="0"/>
+<input id="itemName" type="text" value="name"/>
+<input id="addItem" type="submit" value="GO"/>
+<script>
+    document.getElementById("addItem").onclick = async () => {
+            const rawResponse = await fetch('resources/items', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: document.getElementById("itemId").value,
+                    name:document.getElementById("itemName").value})
+            });
 
-<h3>Fault tolerance</h3>
-<a href="data/resilience" target="_blank" >Fallback after timeout</a> <br/>
-
-
-
+            const content = await rawResponse.text();
+            console.log(content);
+            console.log(rawResponse.status);
+            console.log(rawResponse.headers.get("location"));
+        }
+</script>
 <h3>Health</h3>
-<a href="../health" target="_blank" >Health status (with custom status ServiceHealthCheck)</a> <br/>
-
-
+<a href="../health" target="_blank" >Health status</a> <br/>
 
 <h3>Metrics</h3>
-<a href="data/metric/timed" target="_blank" >Timed endpoint</a> <br/>
 <a href="../metrics" target="_blank" >Metrics page</a> <br/>
-
-
-
-<h3>JWT Auth</h3>
-Look at readme.md on how to test protected endpoint.
-
-
 
 <h3>Open API</h3>
 <a href="../openapi" target="_blank" >Open API Documentation</a> <br/>
 
-
-
-<h3>Open Tracing</h3>
-
-
-
-<h3>Rest Client</h3>
+<h3>Open API UI</h3>
+<a href="../openapi/ui" target="_blank" >Open API Documentation</a> <br/>
 
 </body>
 </html>

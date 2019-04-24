@@ -4,6 +4,7 @@ import ch.puzzle.selbert.jee.kafi.shop.control.Inventory;
 import ch.puzzle.selbert.jee.kafi.shop.entity.Item;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -42,6 +43,7 @@ public class ItemsResource {
     @Metered(name = "addItemMeter")
     @Counted(name = "addItemCount", monotonic = true)
     public Response addItem(Item item) {
+        System.out.println(item.id + " - " + item.name);
         inventory.storeItem(item);
         UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(item.id + "");
         return Response

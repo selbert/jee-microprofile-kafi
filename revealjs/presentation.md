@@ -5,9 +5,21 @@
 
 <!-- section -->
 
-## Jakarta EE & microprofile.io
+## <b>microprofile.io</b><br><small>&& Jakarta EE</small>
 by Thomas Selber<br>
 selber@puzzle.ch
+
+<!-- .slide: class="master02" -->
+<!-- section -->
+# What?
+
+<!-- .slide: class="master03" -->
+<!-- slide -->
+# APIs
+enhance communication
+<!-- .slide: class="master05" -->
+<!-- slide -->
+# JEE vs microprofile
 
 <!-- .slide: class="master02" -->
 <!-- section -->
@@ -34,7 +46,28 @@ selber@puzzle.ch
 <small>standards? standards!</small>
 
 <!-- .slide: class="master02" -->
+
+<!-- slide -->
+# Monolith to microservice
+<!-- .slide: class="master04" -->
+
+<!-- slide -->
+# Scaling
+<!-- .slide: class="master04" -->
+
+<!-- slide -->
+# Single responsibility
+<!-- .slide: class="master04" -->
+
+<!-- slide -->
+# High cohesion, loose coupling 
+<!-- .slide: class="master04" -->
+
 <!-- section -->
+# Personal favourites
+<!-- .slide: class="master03" -->
+
+<!-- slide -->
 # Thin JARs
 <!-- .slide: class="master03" -->
 
@@ -54,15 +87,6 @@ selber@puzzle.ch
 <!-- slide -->
 # Container ready
 <!-- .slide: class="master03" -->
-
-
-<!-- section -->
-# Monolith to microservice
-<!-- .slide: class="master04" -->
-
-<!-- slide -->
-# 12 Factor App
-<!-- .slide: class="master04" -->
 
 <!-- section -->
 # Microprofile 2.2

@@ -1,6 +1,7 @@
 FROM adoptopenjdk/openjdk11-openj9
 
-COPY hollow-thorntail.jar target/shop.war /opt/
+COPY hollow-thorntail.jar /opt/
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/opt/hollow-thorntail.jar", "-Djava.net.preferIPv4Stack=true", "/opt/shop.war"]
+COPY target/shop.war /opt/
