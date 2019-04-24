@@ -4,7 +4,6 @@ import ch.puzzle.selbert.jee.kafi.shop.control.Inventory;
 import ch.puzzle.selbert.jee.kafi.shop.entity.Item;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Metered;
-import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -44,11 +43,14 @@ public class ItemsResource {
     @Counted(name = "addItemCount", monotonic = true)
     public Response addItem(Item item) {
         System.out.println(item.id + " - " + item.name);
-        inventory.storeItem(item);
-        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(item.id + "");
-        return Response
-                .created(builder.build())
-                .links(Link.fromUriBuilder(builder).rel("self").build())
-                .build();
+        return inventory.storeItem(item)
+                .map(i -> uriInfo.getAbsolutePathBuilder().path(i.id + ""))
+                .map(builder -> Response
+                        .created(builder.build())
+                        .links(Link.fromUriBuilder(builder).rel("self").build())
+                        .build())
+                .orElse(Response
+                        .status(Response.Status.SERVICE_UNAVAILABLE)
+                        .build());
     }
 }

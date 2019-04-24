@@ -1,9 +1,7 @@
 package ch.puzzle.selbert.jee.kafi.shop.control;
 
 import ch.puzzle.selbert.jee.kafi.shop.entity.Item;
-import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.config.spi.ConfigProviderResolver;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.metrics.MetricUnits;
@@ -15,6 +13,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @ApplicationScoped
 public class Inventory {
@@ -35,16 +34,18 @@ public class Inventory {
 
     @Fallback(fallbackMethod = "trashTheItem")
     @Retry(maxRetries = 2)
-    public void storeItem(Item item) {
+    public Optional<Item> storeItem(Item item) {
         if (shouldFail && itemsNumber() > maxSize) {
             System.out.println("....retrying...");
             throw new InventoryIsFullException("Store is full");
         }
         this.items.add(item);
+        return Optional.of(item);
     }
 
-    public void trashTheItem(Item egg) {
+    public Optional<Object> trashTheItem(Item egg) {
         System.out.println("--- throwing the item away: " + egg);
+        return Optional.empty();
     }
 
     @Gauge(unit = MetricUnits.NONE)
