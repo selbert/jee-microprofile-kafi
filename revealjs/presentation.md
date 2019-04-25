@@ -16,10 +16,10 @@ selber@puzzle.ch
 <!-- .slide: class="master03" -->
 <!-- slide -->
 # APIs
-enhance communication
 <!-- .slide: class="master05" -->
 <!-- slide -->
-# JEE vs microprofile
+# JEE 
+# microprofile
 
 <!-- .slide: class="master02" -->
 <!-- section -->
@@ -52,23 +52,20 @@ enhance communication
 <!-- .slide: class="master04" -->
 
 <!-- slide -->
-# Scaling
-<!-- .slide: class="master04" -->
-
-<!-- slide -->
 # Single responsibility
 <!-- .slide: class="master04" -->
 
 <!-- slide -->
-# High cohesion, loose coupling 
+# High cohesion
+# loose coupling 
+<!-- .slide: class="master04" -->
+
+<!-- slide -->
+# Scaling
 <!-- .slide: class="master04" -->
 
 <!-- section -->
 # Personal favourites
-<!-- .slide: class="master03" -->
-
-<!-- slide -->
-# Thin JARs
 <!-- .slide: class="master03" -->
 
 <!-- slide -->
@@ -81,12 +78,25 @@ enhance communication
 <!-- .slide: class="master03" -->
 
 <!-- slide -->
-# Focus on business code
+# Focus on business
+<!-- .slide: class="master03" -->
+
+<!-- slide -->
+# Thin JARs
 <!-- .slide: class="master03" -->
 
 <!-- slide -->
 # Container ready
 <!-- .slide: class="master03" -->
+
+<!-- section -->
+# JEE 8
+<!-- .slide: class="master02" -->
+
+<!-- slide -->
+# Same as 2 years ago
+<small>EJB, Servlet, JSP, JSF, JSTL, JPA, JAX-RS, JTA, CDI, Validation, JMS, JavaMail, Connector, JACC, JASPIC, Security, WebSocket, JSON-P, JSON-B, Concurrency, Batch</small>
+<!-- .slide: class="master02" -->
 
 <!-- section -->
 # Microprofile 2.2
