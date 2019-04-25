@@ -17,12 +17,15 @@ import java.util.Optional;
 
 @ApplicationScoped
 public class Inventory {
+
     @Inject
     @ConfigProperty(name = "should.fail", defaultValue = "false")
     Boolean shouldFail;
+
     @Inject
     @ConfigProperty(name = "max.size", defaultValue = "3")
     int maxSize;
+
     private List<Item> items;
 
     @PostConstruct
@@ -33,6 +36,7 @@ public class Inventory {
     @Fallback(fallbackMethod = "trashTheItem")
     @Retry(maxRetries = 2)
     public Optional<Item> storeItem(Item item) {
+
         if (shouldFail && itemsNumber() > maxSize) {
             System.out.println("....retrying...");
             throw new InventoryIsFullException("Store is full");
