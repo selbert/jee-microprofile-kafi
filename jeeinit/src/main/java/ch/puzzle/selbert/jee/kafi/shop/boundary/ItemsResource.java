@@ -42,7 +42,8 @@ public class ItemsResource {
     @Metered(name = "addItemMeter")
     @Counted(name = "addItemCount", monotonic = true)
     public Response addItem(Item item) {
-        System.out.println(item.id + " - " + item.name);
+
+
         return inventory.storeItem(item)
                 .map(i -> uriInfo.getAbsolutePathBuilder().path(i.id + ""))
                 .map(builder -> Response

@@ -10,7 +10,6 @@
 <h3>Config</h3>
 <a href="resources/info" target="_blank">Info endpoint with injected config</a> <br/>
 
-
 <h3>Items resource</h3>
 <a href="resources/other/items" target="_blank">All Items in other service with Typed Rest Client</a> <br/>
 <a href="resources/items" target="_blank">All Items</a> <br/>
@@ -34,11 +33,6 @@
                 name: document.getElementById("itemName").value
             })
         });
-
-        const content = await rawResponse.text();
-        console.log(content);
-        console.log(rawResponse.status);
-        console.log(rawResponse.headers.get("location"));
         document.getElementById("status").innerText = rawResponse.status + "";
         document.getElementById("link").setAttribute("href", rawResponse.headers.get("location"));
         document.getElementById("link").innerText = rawResponse.headers.get("location");
