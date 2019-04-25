@@ -17,15 +17,13 @@ import java.util.Optional;
 
 @ApplicationScoped
 public class Inventory {
-    private List<Item> items;
-
     @Inject
     @ConfigProperty(name = "should.fail", defaultValue = "false")
     Boolean shouldFail;
-
     @Inject
     @ConfigProperty(name = "max.size", defaultValue = "3")
     int maxSize;
+    private List<Item> items;
 
     @PostConstruct
     public void init() {
@@ -61,7 +59,7 @@ public class Inventory {
     @Fallback(GetItemFallback.class)
     public Item getItem(int id) {
         return this.items.stream()
-                .filter(item -> Objects.equals(id,item.id))
+                .filter(item -> Objects.equals(id, item.id))
                 .findAny()
                 .orElseThrow(() -> new ItemNotFoundException(id));
     }
