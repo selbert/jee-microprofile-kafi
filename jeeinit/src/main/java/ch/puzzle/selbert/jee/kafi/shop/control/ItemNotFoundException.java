@@ -6,6 +6,6 @@ import javax.ws.rs.core.Response;
 public class ItemNotFoundException extends WebApplicationException {
 
     public ItemNotFoundException(int id) {
-        super(Response.status(400).header("reason", "message " + id + " not found").build());
+        super(Response.status(404).header("reason", "message " + id + " not found").build());
     }
 }

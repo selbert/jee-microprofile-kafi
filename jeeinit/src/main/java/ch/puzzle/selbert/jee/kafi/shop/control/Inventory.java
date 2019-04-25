@@ -55,7 +55,7 @@ public class Inventory {
     public List<Item> all() {
         return this.items;
     }
-
+    
     @Fallback(GetItemFallback.class)
     public Item getItem(int id) {
         return this.items.stream()
