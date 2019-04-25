@@ -27,4 +27,5 @@ public class InfoResource {
         return Collections.singletonMap("applicationServer", applicationServer);
     }
 
+
 }

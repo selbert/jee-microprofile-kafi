@@ -10,6 +10,7 @@ services:
     environment:
       - SHOULD_FAIL=true
       - APPLICATION_SERVER=OpenLiberty
+      - OTHER_SERVICE=http://shop-pm:8080/shop
     ports:
       - 9080:9080
   shop-pm:
@@ -21,6 +22,7 @@ services:
     environment:
       - SHOULD_FAIL=true
       - APPLICATION_SERVER=Payara Micro
+      - OTHER_SERVICE=http://shop-tt:8080
     ports:
       - 9081:8080
   shop-tt:
