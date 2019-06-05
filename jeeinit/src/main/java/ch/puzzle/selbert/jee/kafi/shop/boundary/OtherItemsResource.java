@@ -27,7 +27,9 @@ public class OtherItemsResource {
     @GET
     @Path("/items")
     public List<Item> getItemsFromOtherService() {
-        ItemsResourceClient client = RestClientBuilder.newBuilder().baseUri(URI.create(otherServiceUrl)).build(ItemsResourceClient.class);
+        ItemsResourceClient client = RestClientBuilder.newBuilder()
+                .baseUri(URI.create(otherServiceUrl))
+                .build(ItemsResourceClient.class);
         return client.items();
     }
 

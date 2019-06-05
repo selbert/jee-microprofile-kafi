@@ -2,9 +2,11 @@ package ch.puzzle.selbert.jee.kafi.shop.boundary;
 
 import ch.puzzle.selbert.jee.kafi.shop.control.Inventory;
 import ch.puzzle.selbert.jee.kafi.shop.entity.Item;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Metered;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -23,10 +25,16 @@ public class ItemsResource {
     @Context
     UriInfo uriInfo;
 
+    @Inject
+    JsonWebToken token;
+
     @GET
     @Metered(name = "itemListMeter")
     @Counted(name = "itemListCount", monotonic = true)
+    @RolesAllowed({"admin"})
     public List<Item> itemList() {
+        System.out.println(token.getName());
+        System.out.println(token.getGroups());
         return inventory.all();
     }
 

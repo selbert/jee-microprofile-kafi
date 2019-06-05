@@ -36,6 +36,13 @@ services:
       - APPLICATION_SERVER=Thorntail
     ports:
       - 9082:8080
+  keycloak:
+    image: jboss/keycloak
+    environment:
+      - KEYCLOAK_USER=thomas
+      - KEYCLOAK_PASSWORD=thomas
+    ports:
+      - 8080:8080
   prometheus:
     image: quay.io/prometheus/prometheus
     volumes:
