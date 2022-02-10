@@ -40,7 +40,7 @@
     "grunt-svginject": "^0.0.2",
     "grunt-svgmin": "^6.0.0",
     "grunt-zip": "~0.18.2",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   },
   "licenses": [
     {
